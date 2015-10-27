@@ -42,9 +42,13 @@ describe Robot do
       end
 
       it '"report" does not exist before robot placed' do
+        # one example to prove unplaced robot still doesn't get methods 
+        extra_robot = Robot.new
         expect(subject).to_not respond_to(:report)
+        expect(extra_robot).to_not respond_to(:report)
         subject.place(0,0)
         expect(subject).to respond_to(:report)
+        expect(extra_robot).to_not respond_to(:report)
       end
 
     end
