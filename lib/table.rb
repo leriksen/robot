@@ -22,4 +22,10 @@ class Table
       fail "Unknown cardinal compass point #{facing}"
     end 
   end
+
+  # is this cartesian pair actually on our table ?
+
+  def is_safe_place?(x, y)
+    x.between?(0, @width) and y.between?(0, @height)
+  end
 end

@@ -7,7 +7,7 @@ describe Table do
   context '#new' do
     it { is_expected.to be_a(described_class) }
 
-    it "only allows tables are 2-dimensional" do
+    it "only allows tables that are 2-dimensional" do
       expect{described_class.new(0,0)}.to raise_exception(RuntimeError, /Table cannot have zero length or height/)
       expect{described_class.new(5,0)}.to raise_exception(RuntimeError, /Table cannot have zero length or height/)
       expect{described_class.new(0,5)}.to raise_exception(RuntimeError, /Table cannot have zero length or height/)
@@ -39,6 +39,26 @@ describe Table do
 
     it "only accepts cardinal points" do
       expect{subject.facing_edge? 2, 2, :up}.to raise_exception(RuntimeError, /Unknown cardinal compass point/)
+    end
+  end
+
+  context '.is_safe_place?(x,y)' do
+    it { is_expected.to respond_to(:is_safe_place?) }
+
+    it "knows if we are off to the left of the table" do
+      expect(subject.is_safe_place? -1, 0).to be_falsey
+    end
+    
+    it "knows if we are off to the right of the table" do
+      expect(subject.is_safe_place? 0, 6).to be_falsey
+    end
+    
+    it "knows if we are off the bottom of the table" do
+      expect(subject.is_safe_place? 0, -1).to be_falsey
+    end
+    
+    it "knows if we are off the top of the table" do
+      expect(subject.is_safe_place? 0, 6).to be_falsey
     end
   end
 end
