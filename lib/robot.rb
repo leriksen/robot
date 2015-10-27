@@ -1,5 +1,8 @@
 class Robot
 
+  class UnplacedError       < StandardError; end
+  class UnknownCommandError < StandardError; end
+
   # an opportunity to show that this default eliminates the need for a 'subject' declaration
   # in the matching spec
   def initialize(table=Table.new(5,5))
@@ -28,13 +31,15 @@ class Robot
   end
 
   def method_missing(name, *args, &block)
-    puts valid_command?(name.downcase) ? \
-     "robot not yet placed - ignoring" : \
-     "unknown command #{name}"
+    if valid_command?(name.downcase)
+      raise UnplacedError, "robot not yet placed"
+    else
+      raise UnknownCommandError, "unknown command #{name}"
+    end
   end
 
   private
   def valid_command?(name)
-    (%w(move left right report) & [name]).any?
+    (%i(move left right report) & [name]).any?
   end
 end

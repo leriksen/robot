@@ -50,7 +50,17 @@ describe Robot do
         expect(subject).to respond_to(:report)
         expect(extra_robot).to_not respond_to(:report)
       end
-
     end
+  end
+
+  context '.method_missing' do
+    it 'raises exceptions for unknown commands' do
+      expect{subject.fire_lasers}.to raise_exception(Robot::UnknownCommandError, /unknown command fire_lasers/)
+    end
+
+    it 'raises exceptions for commands for unplaced robots' do
+      expect{subject.move}.to raise_exception(Robot::UnplacedError, /robot not yet placed/)
+    end
+
   end
 end
