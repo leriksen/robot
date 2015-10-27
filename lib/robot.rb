@@ -5,4 +5,11 @@ class Robot
   def initialize(table=Table.new(5,5))
     @table = table # again, no accessor, we dont know if we need to expose this yet.
   end
+
+  def place(x, y)
+    if @table.is_safe_place?(x, y)
+      @x = x
+      @y = y
+    end
+  end
 end
