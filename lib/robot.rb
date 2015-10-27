@@ -11,16 +11,18 @@ class Robot
       @x = x
       @y = y
 
-      def move
+      # this specific robot gets these methods now,
+      # other unplaced robots do not
+      def self.move
       end
 
-      def left
+      def self.left
       end
 
-      def right
+      def self.right
       end
 
-      def report
+      def self.report
       end
     end
   end
