@@ -6,5 +6,9 @@ describe Table do
 
   context '#new' do
     it { is_expected.to be_a(described_class) }
-  end  
+  end
+
+  context '.facing_edge?(x,y,facing)' do
+    it { is_expected.to respond_to(:facing_edge?) }
+  end
 end
