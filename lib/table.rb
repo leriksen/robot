@@ -1,12 +1,13 @@
 class Table
 
   def initialize(width, height)
+    fail 'Table cannot have zero length or height' if width == 0 or height == 0
     @width  = width
     @height = height
   end
 
-  # let model that the table knows where its edges are and what way you're facing when looking over the edge
-  
+  # lets model that the table knows where its edges are and what way you're facing when looking over the edge
+
   def facing_edge?(x, y, facing)
     case facing
     when :east

@@ -6,6 +6,12 @@ describe Table do
 
   context '#new' do
     it { is_expected.to be_a(described_class) }
+
+    it "only allows tables are 2-dimensional" do
+      expect{described_class.new(0,0)}.to raise_exception(RuntimeError, /Table cannot have zero length or height/)
+      expect{described_class.new(5,0)}.to raise_exception(RuntimeError, /Table cannot have zero length or height/)
+      expect{described_class.new(0,5)}.to raise_exception(RuntimeError, /Table cannot have zero length or height/)
+    end
   end
 
   context '.facing_edge?(x,y,facing)' do
