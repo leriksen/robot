@@ -51,6 +51,10 @@ describe Robot do
         expect(extra_robot).to_not respond_to(:report)
       end
     end
+
+    context "with a facing" do
+      
+    end
   end
 
   context '.method_missing' do
