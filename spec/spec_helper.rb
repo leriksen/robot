@@ -10,6 +10,10 @@ RSpec.configure do |config|
   if config.files_to_run.one?
     config.default_formatter = 'doc'
   end
+
+  config.mock_with :rspec do |mocks|
+    mocks.verify_doubled_constant_names = true
+  end
 end
 
 # load all classes under lib/**
