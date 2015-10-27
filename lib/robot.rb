@@ -12,7 +12,7 @@ class Robot
     @table = table # again, no accessor, we dont know if we need to expose this yet.
   end
 
-  def place(x, y, facing)
+  def place(x, y, facing=:north)
     unless FACING.include? facing
       raise BadFacingError, "facing must be one of (#{FACING})"
     end
