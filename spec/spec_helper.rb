@@ -11,3 +11,9 @@ RSpec.configure do |config|
     config.default_formatter = 'doc'
   end
 end
+
+# load all classes under lib/**
+require 'rake'
+Rake::FileList.new("lib/**/*.rb") do |list|
+  list.exclude(/tasks/)
+end.pathmap("%{^lib/,}X").each {|f| require f}
