@@ -10,7 +10,7 @@ describe Parser do
   }
 
   subject {described_class.new file}
-  context 'reading input' , focus: true do
+  context 'reading input' do
     it 'can iterate' do
       expect(subject).to respond_to(:each)
 
