@@ -78,7 +78,7 @@ describe Robot do
     end
   end
 
-  context '.report' , focus: true do
+  context '.report' do
     it "returns the attributes for a user to create a report" do
       subject.place(0,0)
       expect(subject.report).to eql([0, 0, :north])
