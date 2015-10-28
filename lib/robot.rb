@@ -1,3 +1,5 @@
+require "table"
+
 class Robot
 
   class UnplacedError       < StandardError; end
