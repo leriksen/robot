@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Parser do
   let(:file) {
     StringIO.new <<-EOS
-      PLACE,0,0,north
+      PLACE 0,0,north
       MOVE
       REPORT
     EOS

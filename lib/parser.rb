@@ -22,7 +22,7 @@ class Parser
 
     raise StopIteration unless line
 
-    elements = line.split(',')
-    [elements.shift.to_sym, elements]
+    (command, args) = line.split(' ')
+    [command.to_sym, args.nil? ? args : args.split(',')]
   end
 end
