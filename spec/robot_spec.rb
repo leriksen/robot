@@ -76,6 +76,12 @@ describe Robot do
     it 'raises exceptions for commands for unplaced robots' do
       expect{subject.move}.to raise_exception(Robot::UnplacedError, /robot not yet placed/)
     end
+  end
 
+  context '.report' , focus: true do
+    it "returns the attributes for a user to create a report" do
+      subject.place(0,0)
+      expect(subject.report).to eql([0, 0, :north])
+    end
   end
 end

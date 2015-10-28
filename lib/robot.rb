@@ -42,6 +42,7 @@ class Robot
       end
 
       def self.report
+        [@x, @y, facing]
       end
     end
   end
