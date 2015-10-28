@@ -20,7 +20,11 @@ class Robot
     if @table.is_safe_place?(x, y)
       @x = x
       @y = y
-      @facing = facing
+
+      # just for fun, we rotate the FACING array until the first entry is the requested facing
+      while (FACING.first != facing)
+        FACING.unshift FACING.pop  
+      end
 
       # this specific robot gets these methods now,
       # other unplaced robots do not
@@ -29,10 +33,12 @@ class Robot
 
       def self.left
         FACING.unshift FACING.pop
+        self
       end
 
       def self.right
         FACING.push FACING.shift
+        self
       end
 
       def self.report
@@ -51,5 +57,9 @@ class Robot
   private
   def valid_command?(name)
     %i(move left right report).include? name
+  end
+
+  def facing
+    FACING.first
   end
 end

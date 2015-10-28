@@ -53,7 +53,18 @@ describe Robot do
     end
 
     context "with a facing" do
-      
+      before(:each) do
+        subject.place(0,0, :south)
+      end
+
+      it 'turns left correctly' do
+        subject.left.left
+        expect(subject.send :facing).to eql(:north)
+      end
+      it 'turns right correctly' do
+        subject.right.right
+        expect(subject.send :facing).to eql(:north)
+      end
     end
   end
 
