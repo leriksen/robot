@@ -8,3 +8,9 @@ Simulates a toy robot that is commanded to move about on a table.
 #Rules
 
 - see the PDF in the codebase for rules
+
+#Running
+
+- bundle install
+- bundle exec rake spec
+- bundle exec rake robot_runner[command_file]
