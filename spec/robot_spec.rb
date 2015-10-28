@@ -84,4 +84,18 @@ describe Robot do
       expect(subject.report).to eql([0, 0, :north])
     end
   end
+
+  context '.move' do
+    it 'moves when it is safe' do
+      subject.place(0,0)
+      expect{subject.move}.to_not raise_exception
+      expect(subject.report).to eql([0, 1, :north])
+    end
+
+    it 'raises an exception if moving is unsafe' do
+      subject.place(0,0, :south)
+      expect{subject.move}.to raise_exception(Robot::UnsafeMoveError, /facing edge at /)
+      expect(subject.report).to eql([0, 0, :south])
+    end
+  end
 end

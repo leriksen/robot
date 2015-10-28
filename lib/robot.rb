@@ -3,6 +3,7 @@ class Robot
   class UnplacedError       < StandardError; end
   class UnknownCommandError < StandardError; end
   class BadFacingError      < StandardError; end
+  class UnsafeMoveError     < StandardError; end
 
   FACING = %i(north east south west)
 
@@ -28,7 +29,14 @@ class Robot
 
       # this specific robot gets these methods now,
       # other unplaced robots do not
+
       def self.move
+        # embedding safe-move only policy here - we can discuss other ways later
+        if facing_edge?
+          raise UnsafeMoveError, "robot facing edge at #{report}"
+        else
+          update_position
+        end
       end
 
       def self.left
@@ -62,5 +70,22 @@ class Robot
 
   def facing
     FACING.first
+  end
+
+  def facing_edge?
+    @table.facing_edge? *report
+  end
+
+  def update_position
+    case facing
+    when :north
+      @y += 1
+    when :south
+      @y -= 1
+    when :east
+      @x += 1
+    when :west
+      @x -= 1
+    end
   end
 end
