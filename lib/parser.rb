@@ -15,10 +15,8 @@ class Parser
 
   private
   def process_line(line)
-    if line
-      (command, args) = line.downcase.strip.split(' ')
-      [command.to_sym, args.nil? ? args : args.split(',')]
-    end
+    (command, args) = line.downcase.strip.split(' ')
+    [command.to_sym, args.nil? ? args : args.split(',')]
   end
 
    attr_reader :io
