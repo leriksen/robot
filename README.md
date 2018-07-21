@@ -1,3 +1,5 @@
+[![Known Vulnerabilities](https://snyk.io/test/github/leriksen/robot/badge.svg?targetFile=Gemfile.lock)](https://snyk.io/test/github/leriksen/robot?targetFile=Gemfile.lock)
+
 Toy Robot Challenge
 ===================
 
