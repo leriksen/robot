@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem 'rake'
+gem 'rake', '>= 12.3.3'
 gem 'rspec'
-gem 'simplecov', require: false
+gem 'simplecov', '>= 0.12.0', require: false
 gem 'rspec_junit_formatter'
